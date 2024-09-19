@@ -20,11 +20,12 @@ export class UsersController {
         return []
     }
 
-    //static route
+    /* static route
     @Get('interns') //GET /users/interns
     findAllInterns() {
         return []
     }
+    */
 
     // Order does matter - static route first
     @Get(':id') //GET /users/:id
