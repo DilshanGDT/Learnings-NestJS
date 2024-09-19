@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 // Decorator - predefine funtion to run automatically
 // handle /users routes
@@ -18,8 +18,21 @@ export class UsersController {
         return []
     }
 
+    //static route
+    @Get('interns') //GET /users/interns
+    findAllInterns() {
+        return []
+    }
+
+    // Order does matter - static route first
     @Get(':id') //GET /users/:id
     findOne(@Param('id') id: string) {
         return { id }
     }
+
+    @Post() // POST /users
+    create(@Body() user: {}) {
+        return user
+    }
+
 }
