@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { query } from 'express';
 
+// Controller : handle /users routes
+
 // Decorator - predefine funtion to run automatically
-// handle /users routes
 @Controller('users') 
 export class UsersController {
     /*
