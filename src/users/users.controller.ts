@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { query } from 'express';
 
 // Decorator - predefine funtion to run automatically
 // handle /users routes
@@ -13,8 +14,8 @@ export class UsersController {
         DELETE /users/:id
     */
 
-    @Get() //GET /users
-    findAll() {
+    @Get() //GET /users(param) or /users?role=value (querry param)
+    findAll(@Query('role') role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
         return []
     }
 
@@ -33,6 +34,16 @@ export class UsersController {
     @Post() // POST /users
     create(@Body() user: {}) {
         return user
+    }
+
+    @Patch(':id') //PATCH /users/:id
+    update(@Param('id') id: string, @Body() userUpdate: {}) {
+        return { id, ...userUpdate }
+    }
+
+    @Delete(':id') //DELETE /users/:id
+    delete(@Param('id') id: string) {
+        return { id }
     }
 
 }
