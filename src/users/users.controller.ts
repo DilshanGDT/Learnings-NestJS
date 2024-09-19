@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { query } from 'express';
+import { UsersService } from './users.service';
 
 // Controller : handle /users routes
 
@@ -14,6 +15,8 @@ export class UsersController {
         PATCH /users/:id
         DELETE /users/:id
     */
+
+    
 
     @Get() //GET /users(param) or /users?role=value (querry param)
     findAll(@Query('role') role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
